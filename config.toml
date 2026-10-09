@@ -2,9 +2,7 @@
 files = [
   "cfg/animation.toml",
   "cfg/appearance.toml",
-  "cfg/autostart.toml",
   "cfg/hot-corners.toml",
-  "cfg/input.toml",
   "cfg/keybinds.toml",
   "cfg/layer-rule.toml",
   "cfg/layout.toml",

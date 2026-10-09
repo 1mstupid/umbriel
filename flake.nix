@@ -41,22 +41,6 @@
       pkgs.symlinkJoin {
         name = "umbriel-with-config";
 
-        paths = [
-          umbrielPackage
-          (pkgs.runCommand "umbriel-wayland-session" {} ''
-            mkdir -p $out/share/wayland-sessions
-
-            cat > $out/share/wayland-sessions/umbriel.desktop <<EOF
-            [Desktop Entry]
-            Name=Umbriel
-            Comment=Umbriel Wayland Session
-            Exec=umbriel
-            Type=Application
-            DesktopNames=Umbriel
-            EOF
-          '')
-        ];
-
         nativeBuildInputs = [
           pkgs.makeWrapper
         ];
