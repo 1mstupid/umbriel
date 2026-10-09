@@ -1,0 +1,5 @@
+[general]
+autostart = [
+    "qs",
+    "awww-daemon", 
+]
