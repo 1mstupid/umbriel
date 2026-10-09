@@ -64,7 +64,7 @@
           DesktopNames=Umbriel
           EOF
         '';
-      }
+      };
       mkConfig = system:
         let
           pkgs = import nixpkgs {
