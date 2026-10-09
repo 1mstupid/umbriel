@@ -43,6 +43,18 @@
 
         paths = [
           umbrielPackage
+          (pkgs.runCommand "umbriel-wayland-session" {} ''
+            mkdir -p $out/share/wayland-sessions
+
+            cat > $out/share/wayland-sessions/umbriel.desktop <<EOF
+            [Desktop Entry]
+            Name=Umbriel
+            Comment=Umbriel Wayland Session
+            Exec=umbriel
+            Type=Application
+            DesktopNames=Umbriel
+            EOF
+          '')
         ];
 
         nativeBuildInputs = [
@@ -52,17 +64,6 @@
         postBuild = ''
           wrapProgram $out/bin/umbriel \
             --add-flags "--config ${umbrielConfig}/config.toml"
-
-          mkdir -p $out/share/wayland-sessions
-
-          cat > $out/share/wayland-sessions/umbriel.desktop <<EOF
-          [Desktop Entry]
-          Name=Umbriel
-          Comment=Umbriel Wayland Session
-          Exec=$out/bin/umbriel
-          Type=Application
-          DesktopNames=Umbriel
-          EOF
         '';
       };
       mkConfig = system:
