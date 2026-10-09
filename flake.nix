@@ -15,41 +15,6 @@
 
       forAllSystems = nixpkgs.lib.genAttrs systems;
 
-      mkUmbriel = system:
-        let
-          pkgs = import nixpkgs {
-            inherit system;
-          };
-
-          umbrielConfig = pkgs.stdenvNoCC.mkDerivation {
-            pname = "umbriel-config";
-            version = "unstable";
-
-            src = ./.;
-            dontBuild = true;
-
-            installPhase = ''
-              mkdir -p $out/cfg
-
-              cp config.toml $out/config.toml
-              cp cfg/*.toml $out/cfg/
-            '';
-          };
-
-          umbrielPackage = umbriel.packages.${system}.default;
-        in
-      pkgs.symlinkJoin {
-        name = "umbriel-with-config";
-
-        nativeBuildInputs = [
-          pkgs.makeWrapper
-        ];
-
-        postBuild = ''
-          wrapProgram $out/bin/umbriel \
-            --add-flags "--config ${umbrielConfig}/config.toml"
-        '';
-      };
       mkConfig = system:
         let
           pkgs = import nixpkgs {
@@ -68,6 +33,32 @@
 
             cp config.toml $out/config.toml
             cp cfg/*.toml $out/cfg/
+          '';
+        };
+
+      mkUmbriel = system:
+        let
+          pkgs = import nixpkgs {
+            inherit system;
+          };
+
+          umbrielConfig = mkConfig system;
+          umbrielPackage = umbriel.packages.${system}.default;
+        in
+        pkgs.symlinkJoin {
+          name = "umbriel-with-config";
+
+          paths = [
+            umbrielPackage
+          ];
+
+          nativeBuildInputs = [
+            pkgs.makeWrapper
+          ];
+
+          postBuild = ''
+            wrapProgram $out/bin/umbriel \
+              --add-flags "--config ${umbrielConfig}/config.toml"
           '';
         };
     in
