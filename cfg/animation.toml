@@ -9,32 +9,27 @@ duration_ms = 150
 curve = "ease"
 style = "popin"                # popin, zoom, slide, fade, none
 scale = 0.90                   # More subtle pop-in (default is 0.85)
-# shader  = "../shaders/.glsl"
 
 [animation.windows_out]
 enabled = true
 duration_ms = 150
 curve = "ease"
 style = "fade"                 # fade, slide
-# shader  = "../shaders/.glsl"
 
 [animation.windows_move]
 enabled = true
 duration_ms = 200
 curve = "snappy"               # Snappy is best for window movement
-# shader  = "../shaders/.glsl"
 
 [animation.workspaces]
 enabled = true
 duration_ms = 200
 curve = "ease"
-# shader  = "../shaders/.glsl"
 
 [animation.overview]
-#enabled = true
-#duration_ms = 200
-#curve = "ease"
-# shader  = "../shaders/.glsl"
+enabled = true
+duration_ms = 200
+curve = "ease"
 
 [animation.scratchpad]
 enabled = false
@@ -50,17 +45,14 @@ fullscreen = false
 enabled = false
 duration_ms = 200
 curve = "ease"
-# shader  = "../shaders/.glsl"
 
 [animation.dim_unfocused]
 enabled = false
 duration_ms = 200
 curve = "ease"
 dim = 0.0                      # 0.0-1.0
-# shader  = "../shaders/.glsl"
 
 [animation.layers]
 enabled = true                 # Turned on for Noctalia shell animations
 duration_ms = 200
 curve = "ease"
-# shader  = "../shaders/.glsl"

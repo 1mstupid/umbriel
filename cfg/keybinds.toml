@@ -1,12 +1,14 @@
 [keybinds]
 
-"Mod+Return" = "spawn:ghostty"
-"Mod+Ctrl+E" = "spawn:ghostty --class=yazi.filemanager -e yazi"
-"Mod+B" = "spawn:helium"
+"Mod+Return" = { action = "spawn:alacritty", allow_when_locked = true }
 
-"Mod+T" = "spawn:qs ipc call applauncher toggle"
-"Mod+Shift+B" = "spawn:qs ipc call network toggle"
-"Mod+Shift+P" = "spawn:qs ipc call powermenu toggle"
+"Mod+T" = { action = "spawn:qs ipc call applauncher toggle", allow_when_locked = true }
+"Mod+Shift+E" = { action = "spawn:qs ipc call chaldea toggle", allow_when_locked = true }
+"Mod+W" = { action = "spawn:qs ipc call wallpapers toggle", allow_when_locked = true }
+
+"Mod+Shift+B" = { action = "spawn:qs ipc call network toggle", allow_when_locked = true }
+
+"Mod+Shift+P" = { action = "spawn:qs ipc call powermenu toggle", allow_when_locked = true }
 
 "XF86AudioRaiseVolume" = { action = "spawn:wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+", allow_when_locked = true }
 "XF86AudioLowerVolume" = { action = "spawn:wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-", allow_when_locked = true }
@@ -28,7 +30,7 @@
 
 # ── Window Actions ──
 "Mod+Q" = "window-close"
-"Mod+T" = "window-toggle-floating"
+"Mod+Ctrl+T" = "window-toggle-floating"
 "Mod+F" = "window-toggle-maximize"
 "Mod+M" = "window-toggle-maximize-to-edges"
 "Mod+Ctrl+F" = "window-toggle-fullscreen"
@@ -115,7 +117,6 @@
 # ── Outputs ──
 "Mod+Shift+Left" = "output-focus-left"
 "Mod+Shift+Right" = "output-focus-right"
-"Mod+Shift+P" = '''spawn:bash -c "if grep -q 'enabled = true' ~/.config/umbriel/cfg/outputs.toml; then sed -i 's/enabled = true/enabled = false/' ~/.config/umbriel/cfg/outputs.toml; else sed -i 's/enabled = false/enabled = true/' ~/.config/umbriel/cfg/outputs.toml; fi"'''
 
 # ── Scratchpad ──
 "Mod+Shift+Space" = "scratchpad-toggle"
@@ -124,6 +125,6 @@
 "Mod+Shift+Tab" = "scratchpad-focus-next"
 
 # ── System ──
-"Mod+W" = { action = "overview-toggle", repeat = false }
+"Mod+O" = { action = "overview-toggle", repeat = false }
 "Mod+F11" = { action = "submap:passthrough", repeat = false }
 "submap[passthrough],Mod+F11" = "submap:reset"

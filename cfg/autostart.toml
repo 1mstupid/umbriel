@@ -1,5 +1,10 @@
 [general]
+show_cheatsheet = false
+xwayland = true
+xwayland_native_resolution = true
 autostart = [
     "qs",
-    "awww-daemon", 
+    "awww-daemon",
+    "wl-paste --type text --watch cliphist store"
 ]
+

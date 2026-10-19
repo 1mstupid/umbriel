@@ -1,0 +1,9 @@
+# Colors
+[colors.border]
+focused = "#2f2a3cFF"
+unfocused = "#231e33FF"
+outer = "#161320FF"
+
+[colors]
+backdrop = "#16132000"
+shadow = "#000000FF"

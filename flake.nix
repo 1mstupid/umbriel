@@ -1,12 +1,13 @@
+
 {
   description = "Umbriel configuration and launcher";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    umbriel.url = "git+https://github.com/noctalia-dev/umbriel";
+    umbriel.url = "github:noctalia-dev/umbriel";
   };
 
-  outputs = { self, nixpkgs, umbriel }:
+  outputs = { self, nixpkgs, umbriel, ... }:
     let
       systems = [
         "x86_64-linux"
@@ -17,63 +18,87 @@
 
       mkConfig = system:
         let
-          pkgs = import nixpkgs {
-            inherit system;
-          };
+          pkgs = import nixpkgs { inherit system; };
         in
         pkgs.stdenvNoCC.mkDerivation {
           pname = "umbriel-config";
-          version = "unstable";
+          version = "1.0.0";
 
-          src = ./.;
+          src = pkgs.lib.cleanSourceWith {
+            src = ./.;
+            filter = path: type:
+              let
+                name = baseNameOf path;
+              in
+              !(builtins.elem name [
+                ".git"
+                ".direnv"
+                "result"
+              ]);
+          };
+
           dontBuild = true;
 
           installPhase = ''
-            mkdir -p $out/cfg
+            runHook preInstall
 
-            cp config.toml $out/config.toml
-            cp cfg/*.toml $out/cfg/
+            mkdir -p "$out/cfg"
+
+            cp config.toml "$out/config.toml"
+            cp -r cfg/. "$out/cfg/"
+
+            runHook postInstall
           '';
         };
 
       mkUmbriel = system:
         let
-          pkgs = import nixpkgs {
-            inherit system;
-          };
+          pkgs = import nixpkgs { inherit system; };
 
-          umbrielConfig = mkConfig system;
-          umbrielPackage = umbriel.packages.${system}.default;
+          config = mkConfig system;
+          upstream = umbriel.packages.${system}.default;
         in
         pkgs.symlinkJoin {
           name = "umbriel-with-config";
 
-          paths = [
-            umbrielPackage
-          ];
+          paths = [ upstream ];
 
           nativeBuildInputs = [
             pkgs.makeWrapper
           ];
 
           postBuild = ''
-            wrapProgram $out/bin/umbriel \
-              --add-flags "--config ${umbrielConfig}/config.toml"
+            wrapProgram "$out/bin/umbriel" \
+              --add-flags "-c ${config}/config.toml"
           '';
         };
     in
     {
-      packages = forAllSystems (system: {
-        default = mkUmbriel system;
-        umbriel = mkUmbriel system;
-        config = mkConfig system;
-      });
+      packages = forAllSystems (system:
+        let
+          config = mkConfig system;
+          compositor = mkUmbriel system;
+        in
+        {
+          default = compositor;
+          umbriel = compositor;
+          inherit config;
+        });
 
-      apps = forAllSystems (system: {
-        default = {
-          type = "app";
-          program = "${mkUmbriel system}/bin/umbriel";
-        };
-      });
+      apps = forAllSystems (system:
+        let
+          compositor = mkUmbriel system;
+        in
+        {
+          default = {
+            type = "app";
+            program = "${compositor}/bin/umbriel";
+          };
+
+          umbriel = {
+            type = "app";
+            program = "${compositor}/bin/umbriel";
+          };
+        });
     };
 }

@@ -4,24 +4,6 @@ blur = true
 blur_optimized = false
 opacity = 0.9
 
-# ─── Noctalia / Umbriel ───
-[[window_rule]]
-match.app_id = "^dev.noctalia.Noctalia$"
-default_floating = true
-default_floating_size = { width = 0.5, height = 0.7 }
-
-[[window_rule]]
-match.app_id = "^dev.noctalia.UmbrielSharePicker$"
-default_floating = true
-default_floating_size = { width = 0.4, height = 0.5 }
-default_position = { x = 32, y = 32, anchor = "center" }
-
-[[window_rule]]
-match.app_id = "^xdg-desktop-portal-gtk$"
-default_floating = true
-default_floating_size = { width = 0.4, height = 0.5 }
-default_position = { x = 0, y = 0, anchor = "center" }
-
 # ─── Picture-in-Picture ───
 [[window_rule]]
 match.title = "^(Picture-in-Picture|Picture in picture)$"
@@ -43,7 +25,7 @@ default_position = { x = 0, y = 0, anchor = "center" }
 
 # ─── General Floating ───
 [[window_rule]]
-match.app_id = "^(dev\\.lemmy\\.swash|Mullvad Browser|Tor Browser|org\\.kde\\.kdeconnect\\.handler|org\\.kde\\.kdeconnect\\.daemon|com\\.rafaelmardojai\\.Blanket)$"
+match.app_id = "^(dev\\.lemmy\\.swash|Mullvad Browser|Tor Browser|org\\.kde\\.kdeconnect\\.handler|org\\.kde\\.kdeconnect\\.daemon|com\\.rafaelmardojai\\.Blanket\\.qbittorrent-wr)$"
 default_floating = true
 
 # ─── Custom Floating & Sized ───

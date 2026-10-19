@@ -24,12 +24,12 @@ scroll_wheel_step = 60
 enabled = true
 
 [input.cursor]
-theme = "capitaine-cursors-white"
-size = 32
+theme = "Bibata-Modern-Classic"
+size = 24
 follows_focus = true
 hardware_cursor = true
-hide_when_typing = false
-hide_timeout_ms = 0
+hide_when_typing = true
+hide_timeout_ms = 510
 
 [input.focus]
 follows_mouse = true
