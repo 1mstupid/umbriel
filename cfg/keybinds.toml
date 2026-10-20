@@ -4,6 +4,7 @@
 
 "Mod+T" = { action = "spawn:quickshell ipc call applauncher toggle", allow_when_locked = true }
 "Mod+Shift+E" = { action = "spawn:quickshell ipc call chaldea toggle", allow_when_locked = true }
+"Mod+R" = { action = "spawn:record" }
 "Mod+W" = { action = "spawn:quickshell ipc call wallpapers toggle", allow_when_locked = true }
 
 "Mod+Shift+B" = { action = "spawn:quickshell ipc call network toggle", allow_when_locked = true }
