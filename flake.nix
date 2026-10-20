@@ -64,6 +64,18 @@
             postBuild = ''
               wrapProgram "$out/bin/umbriel" \
                 --add-flags "-c ${config}/config.toml"
+
+              # Replace the launcher with a copy that calls the wrapped binary.
+              # The copy keeps the login-environment logic from upstream.
+              rm "$out/bin/start-umbriel"
+              sed "s|${upstream}/bin/umbriel|$out/bin/umbriel|g" \
+                ${upstream}/bin/start-umbriel > "$out/bin/start-umbriel"
+              chmod +x "$out/bin/start-umbriel"
+
+              # Point the session file at the patched launcher.
+              for f in "$out/share/wayland-sessions/"*.desktop; do
+                sed -i "s|${upstream}/bin/start-umbriel|$out/bin/start-umbriel|g" "$f"
+              done
             '';
             passthru = upstream.passthru or {};
             meta = upstream.meta or {};
