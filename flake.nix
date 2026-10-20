@@ -50,24 +50,24 @@
           '';
         };
 
-        mkUmbriel = system:
+      # Overridable: .override { config = otherConfigDerivation; }
+      mkUmbriel = system:
         let
           pkgs = import nixpkgs { inherit system; };
-          config = mkConfig system;
           upstream = umbriel.packages.${system}.default;
         in
-        (pkgs.symlinkJoin {
-          name = "umbriel-with-config";
-          paths = [ upstream ];
-          nativeBuildInputs = [ pkgs.makeWrapper ];
-          postBuild = ''
-            wrapProgram "$out/bin/umbriel" \
-              --add-flags "-c ${config}/config.toml"
-          '';
-        }).overrideAttrs (old: {
-          passthru = (upstream.passthru or {}) // (old.passthru or {});
-          meta = (upstream.meta or {}) // (old.meta or {});
-        });
+        pkgs.lib.makeOverridable ({ config }:
+          (pkgs.symlinkJoin {
+            name = "umbriel-with-config";
+            paths = [ upstream ];
+            nativeBuildInputs = [ pkgs.makeWrapper ];
+            postBuild = ''
+              wrapProgram "$out/bin/umbriel" \
+                --add-flags "-c ${config}/config.toml"
+            '';
+            passthru = upstream.passthru or {};
+            meta = upstream.meta or {};
+          })) { config = mkConfig system; };
     in
     {
       packages = forAllSystems (system:
