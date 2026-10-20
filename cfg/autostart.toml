@@ -3,7 +3,7 @@ show_cheatsheet = false
 xwayland = true
 xwayland_native_resolution = true
 autostart = [
-    "qs",
+    "quickshell",
     "awww-daemon",
     "wl-paste --type text --watch cliphist store"
 ]
