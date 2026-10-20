@@ -2,13 +2,13 @@
 
 "Mod+Return" = { action = "spawn:alacritty", allow_when_locked = true }
 
-"Mod+T" = { action = "spawn:qs ipc call applauncher toggle", allow_when_locked = true }
-"Mod+Shift+E" = { action = "spawn:qs ipc call chaldea toggle", allow_when_locked = true }
-"Mod+W" = { action = "spawn:qs ipc call wallpapers toggle", allow_when_locked = true }
+"Mod+T" = { action = "spawn:quickshell ipc call applauncher toggle", allow_when_locked = true }
+"Mod+Shift+E" = { action = "spawn:quickshell ipc call chaldea toggle", allow_when_locked = true }
+"Mod+W" = { action = "spawn:quickshell ipc call wallpapers toggle", allow_when_locked = true }
 
-"Mod+Shift+B" = { action = "spawn:qs ipc call network toggle", allow_when_locked = true }
+"Mod+Shift+B" = { action = "spawn:quickshell ipc call network toggle", allow_when_locked = true }
 
-"Mod+Shift+P" = { action = "spawn:qs ipc call powermenu toggle", allow_when_locked = true }
+"Mod+Shift+P" = { action = "spawn:quickshell ipc call powermenu toggle", allow_when_locked = true }
 
 "XF86AudioRaiseVolume" = { action = "spawn:wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+", allow_when_locked = true }
 "XF86AudioLowerVolume" = { action = "spawn:wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-", allow_when_locked = true }
