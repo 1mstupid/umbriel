@@ -3,7 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    umbriel.url = "github:noctalia-dev/umbriel";
+    umbriel = {
+      url = "github:noctalia-dev/umbriel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, umbriel, ... }:
@@ -82,6 +85,7 @@
           })) { config = mkConfig system; };
     in
     {
+      nixosModules.default = umbriel.nixosModules.default;
       packages = forAllSystems (system:
         let
           config = mkConfig system;
