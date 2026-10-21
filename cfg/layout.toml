@@ -1,6 +1,6 @@
 # Layout algorithm: "scrolling", "dwindle", or "master".
 [layout]
-mode = "scrolling"
+mode = "master"
 gap = 6
 extent_presets = [0.333, 0.5, 0.667]
 
@@ -16,7 +16,7 @@ center_underfull_strip = true
 center_focused = "never"
 
 [layout.dwindle]
-# preserve_split = false
+preserve_split = false
 
 [layout.master]
 position = "left"
