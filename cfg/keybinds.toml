@@ -11,6 +11,7 @@
 
 "Mod+Shift+P" = { action = "spawn:quickshell ipc call powermenu toggle", allow_when_locked = true }
 
+"XF86AudioPlay" = { action = "spawn:playerctl play-pause", repeat = false }
 "XF86AudioRaiseVolume" = { action = "spawn:wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+", allow_when_locked = true }
 "XF86AudioLowerVolume" = { action = "spawn:wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-", allow_when_locked = true }
 "XF86AudioMute" = { action = "spawn:wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle", allow_when_locked = true }

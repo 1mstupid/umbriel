@@ -1,3 +1,4 @@
 [workspaces]
+workspace_axis = "horizontal"
 back_and_forth = true
 empty_above = true
