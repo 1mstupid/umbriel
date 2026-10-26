@@ -65,6 +65,8 @@
             paths = [ upstream ];
             nativeBuildInputs = [ pkgs.makeWrapper ];
             postBuild = ''
+              wrapProgram "$out/bin/umbriel"
+
               cat > "$out/bin/umbriel" <<EOF
               #!/bin/sh
               case "\$1" in
@@ -73,7 +75,15 @@
               esac
               EOF
               chmod +x "$out/bin/umbriel"
-              ...
+
+              rm "$out/bin/start-umbriel"
+              sed "s|${upstream}/bin/umbriel|$out/bin/umbriel|g" \
+                ${upstream}/bin/start-umbriel > "$out/bin/start-umbriel"
+              chmod +x "$out/bin/start-umbriel"
+
+              for f in "$out/share/wayland-sessions/"*.desktop; do
+                sed -i "s|${upstream}/bin/start-umbriel|$out/bin/start-umbriel|g" "$f"
+              done
             '';
             passthru = upstream.passthru or {};
             meta = upstream.meta or {};
