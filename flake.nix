@@ -65,20 +65,15 @@
             paths = [ upstream ];
             nativeBuildInputs = [ pkgs.makeWrapper ];
             postBuild = ''
-              wrapProgram "$out/bin/umbriel" \
-                --add-flags "-c ${config}/config.toml"
-
-              # Replace the launcher with a copy that calls the wrapped binary.
-              # The copy keeps the login-environment logic from upstream.
-              rm "$out/bin/start-umbriel"
-              sed "s|${upstream}/bin/umbriel|$out/bin/umbriel|g" \
-                ${upstream}/bin/start-umbriel > "$out/bin/start-umbriel"
-              chmod +x "$out/bin/start-umbriel"
-
-              # Point the session file at the patched launcher.
-              for f in "$out/share/wayland-sessions/"*.desktop; do
-                sed -i "s|${upstream}/bin/start-umbriel|$out/bin/start-umbriel|g" "$f"
-              done
+              cat > "$out/bin/umbriel" <<EOF
+              #!/bin/sh
+              case "\$1" in
+                ""|-s|-c) exec "$out/bin/.umbriel-wrapped_" -c ${config}/config.toml "\$@" ;;
+                *)        exec "${upstream}/bin/umbriel" "\$@" ;;
+              esac
+              EOF
+              chmod +x "$out/bin/umbriel"
+              ...
             '';
             passthru = upstream.passthru or {};
             meta = upstream.meta or {};
