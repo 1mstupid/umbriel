@@ -4,7 +4,13 @@
 
 "Mod+T" = { action = "spawn:quickshell ipc call applauncher toggle", allow_when_locked = true }
 
-"Mod+Shift+C" = { action = "spawn:quickshell ipc call clipboard toggle", allow_when_locked = true }
+"Mod+Shift+V" = { action = "spawn:quickshell ipc call clipboard toggle", allow_when_locked = true }
+
+"Mod+Shift+C" = { action = "spawn:quickshell ipc call drawer toggle", allow_when_locked = true }
+
+"Mod+Shift+N" = { action = "spawn:quickshell ipc call notifications toggle", allow_when_locked = true }
+
+"Mod+Shift+U" = { action = "spawn:quickshell ipc call dashboard toggle", allow_when_locked = true }
 
 "Mod+R" = { action = "spawn:record" }
 
@@ -35,7 +41,7 @@
 
 # ── Window Actions ──
 "Mod+Q" = "window-close"
-"Mod+Ctrl+T" = "window-toggle-floating"
+"Mod+Space" = "window-toggle-floating"
 "Mod+F" = "window-toggle-maximize"
 "Mod+M" = "window-toggle-maximize-to-edges"
 "Mod+Ctrl+F" = "window-toggle-fullscreen"

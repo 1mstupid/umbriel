@@ -87,3 +87,12 @@ match.title = ".*(Downloads|Opening).*"
 default_floating = true
 default_floating_size = { width = 0.55, height = 0.6 }
 default_position = { x = 0, y = 0, anchor = "center" }
+
+# Steam notification toasts
+[[window_rule]]
+match.app_id = "steam"
+confine_pointer = true
+match.title = "^notificationtoasts_\\d+_desktop$"
+default_floating = true
+default_focused = false
+
