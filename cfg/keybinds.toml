@@ -12,8 +12,6 @@
 
 "Mod+Shift+U" = { action = "spawn:quickshell ipc call dashboard toggle", allow_when_locked = true }
 
-"Mod+R" = { action = "spawn:record" }
-
 "Mod+W" = { action = "spawn:quickshell ipc call wallpapers toggle", allow_when_locked = true }
 
 "Mod+Shift+B" = { action = "spawn:quickshell ipc call network toggle", allow_when_locked = true }
