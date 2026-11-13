@@ -6,9 +6,13 @@
 
 "Mod+Shift+V" = { action = "spawn:quickshell ipc call clipboard toggle", allow_when_locked = true }
 
-"Mod+Shift+C" = { action = "spawn:quickshell ipc call drawer toggle", allow_when_locked = true }
+"Mod+C" = { action = "spawn:quickshell ipc call drawer toggle", allow_when_locked = true }
+
+"Mod+Shift+C" = { action = "spawn:quickshell ipc call colorschemes toggle", allow_when_locked = true }
 
 "Mod+Shift+N" = { action = "spawn:quickshell ipc call notifications toggle", allow_when_locked = true }
+
+"Mod+Shift+O" = { action = "spawn:quickshell ipc call layout toggle", allow_when_locked = true }
 
 "Mod+Shift+U" = { action = "spawn:quickshell ipc call dashboard toggle", allow_when_locked = true }
 
