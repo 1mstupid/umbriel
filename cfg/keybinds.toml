@@ -6,7 +6,7 @@
 
 "Mod+Shift+V" = { action = "spawn:quickshell ipc call clipboard toggle", allow_when_locked = true }
 
-"Mod+C" = { action = "spawn:quickshell ipc call drawer toggle", allow_when_locked = true }
+"Mod+E" = { action = "spawn:quickshell ipc call drawer toggle", allow_when_locked = true }
 
 "Mod+Shift+C" = { action = "spawn:quickshell ipc call colorschemes toggle", allow_when_locked = true }
 
