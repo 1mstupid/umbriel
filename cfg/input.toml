@@ -7,7 +7,7 @@ layout = "us"
 track_layout = "global"
 variant = "altgr-intl"
 options = ""
-repeat_rate = 50
+repeat_rate = 35
 repeat_delay = 300
 numlock_toggle = true
 

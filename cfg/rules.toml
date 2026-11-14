@@ -59,6 +59,7 @@ opacity = 1.0
 match.app_id = "^(com\\.interversehq\\.qView|mpv)$"
 opacity = 1.0
 default_floating = true
+default_floating_size = { width = 0.9, height = 0.6 }
 
 # ─── Open Maximized ───
 [[window_rule]]

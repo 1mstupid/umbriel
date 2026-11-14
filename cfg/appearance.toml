@@ -15,11 +15,11 @@ shadow = "#000000FF"
 enabled = true
 optimized = true
 passes = 2
-radius = 8
-noise = 0.3
+radius = 13
+noise = 0
 saturation = 0.95
-brightness = 0.44
-contrast = 1
+brightness = 0.8
+contrast = 2
 
 [appearance.shadow]
 enabled = true
