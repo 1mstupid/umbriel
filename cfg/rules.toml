@@ -4,6 +4,11 @@ blur = true
 blur_optimized = false
 opacity = 0.9
 
+# ─── Quickshell Shadows ───
+[[layer_rule]]
+match.namespace = "^quickshell$"
+shadow = true
+
 # ─── Picture-in-Picture ───
 [[window_rule]]
 match.title = "^(Picture-in-Picture|Picture in picture)$"

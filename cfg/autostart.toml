@@ -4,6 +4,7 @@ xwayland = true
 xwayland_native_resolution = true
 autostart = [
     "quickshell",
+    "quickshell ipc call lock lock",
     "steam -silent",
     "awww-daemon",
     "wl-paste --type text --watch cliphist store"
