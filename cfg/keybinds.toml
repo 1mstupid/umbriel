@@ -8,6 +8,10 @@
 
 "Mod+E" = { action = "spawn:quickshell ipc call drawer toggle", allow_when_locked = true }
 
+"Mod+Ctrl+S" = { action = "spawn:quickshell ipc call settings toggle" }
+
+"Alt+Ctrl+L" = { action = "spawn:quickshell ipc call lock lock" }
+
 "Mod+Shift+C" = { action = "spawn:quickshell ipc call colorschemes toggle", allow_when_locked = true }
 
 "Mod+Shift+N" = { action = "spawn:quickshell ipc call notifications toggle", allow_when_locked = true }
