@@ -7,7 +7,7 @@ extent_presets = [0.333, 0.5, 0.667]
 [layout.struts]
 left = 0
 right = 0
-top = 0
+top = 6
 bottom = 0
 
 [layout.scrolling]
